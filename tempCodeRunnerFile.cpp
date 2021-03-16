@@ -1,7 +1,4 @@
-Node(){
-        data = 0;
-        next = NULL;
-    }
-    Node(int d){
-        data = d;
-    }
+while(head!=NULL){
+                cout<< ptr->data <<endl;
+                ptr = ptr -> next;
+            

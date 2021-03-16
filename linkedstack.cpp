@@ -1,3 +1,9 @@
+/*
+* File: linkedstack.cpp
+* This program implements the linked list in a stack using classes
+* and pointers
+*/
+
 #include <iostream>
 using namespace std;
 
@@ -16,15 +22,15 @@ public:
 
 class LinkedStacks{
 private: 
-    Node* head;
+    Node* head = NULL;
 public:
     void push(Node* n){
-        int val;
         if(head == NULL){
+            n->next = NULL;
             head = n;
         }else{
             n->next = head;
-            head = n->next;
+            head = n;
         }
     }
     int pop(){
@@ -33,7 +39,7 @@ public:
             val = 0;
         }else{
             val = head->data;
-            head = head -> next;    
+            head = head->next;    
         }
         return val;
     }
@@ -48,9 +54,10 @@ public:
     }
     void display(){
         Node* ptr = head;
-        if(head!=NULL){
-            while(head!=NULL){
-                cout<< ptr->data <<endl;
+        if(ptr!=NULL){
+            cout<<"Head\n";
+            while(ptr!=NULL){
+                cout<<"|\nv\n"<< ptr->data <<endl;
                 ptr = ptr -> next;
             }        
         }else{
@@ -87,23 +94,24 @@ int main(){
             cout << "Node pushed to stack" <<endl;
             break;
         case 2:
-            cout<<"Pop operation\n"<<endl;
+            cout<<"Pop Operation"<<endl;
             if(linkedstack.pop()==0){
                 cout<<"Stack underflow!!"<<endl;
             }else{
-                cout <<"Element poped from stack: "<< linkedstack.pop() <<endl;
+                cout <<"Node element popped from stack: "<< linkedstack.pop() <<endl;
             };
             break;
         case 3:
-            cout<<"Top operation\n"<<endl;
+            cout<<"Top Operation"<<endl;
             if(linkedstack.top()==0){
-                cout<<"Stack is Empty"<<endl;
+                cout<<"Stack is Empty!"<<endl;
             }else{
-                cout<< "Element on top of the stack: " << linkedstack.top() <<endl;
+                cout<< "Node element on top of the stack: " << linkedstack.top() <<endl;
             }
             break;
         case 4:
             cout << "List of nodes in the Stack"<<endl;
+            cout<< "----------------------------"<<endl;
             linkedstack.display();
             break;
         default:
